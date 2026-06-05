@@ -1,0 +1,29 @@
+visualverse-notes/
+├── .env.local.example
+├── package.json
+├── next.config.js
+├── tailwind.config.ts
+├── postcss.config.js
+├── tsconfig.json
+├── middleware.ts
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── globals.css
+│   ├── auth/
+│   │   ├── login/page.tsx
+│   │   └── signup/page.tsx
+│   └── dashboard/
+│       ├── layout.tsx
+│       ├── page.tsx
+│       └── components/
+│           ├── Sidebar.tsx
+│           ├── NotesList.tsx
+│           ├── NoteCard.tsx
+│           └── NoteEditor.tsx
+└── lib/
+    ├── types.ts
+    └── supabase/
+        ├── client.ts
+        ├── server.ts
+        └── middleware.ts
