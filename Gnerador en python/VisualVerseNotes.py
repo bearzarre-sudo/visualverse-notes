@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generador del proyecto VisualVerse Notes
-Ejecutar: python generar_visualverse.py
+Ejecutar: python VisualVerseNotes.py
 """
 
 import os
