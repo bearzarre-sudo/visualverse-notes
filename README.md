@@ -36,8 +36,82 @@ Plataforma colaborativa de apuntes y propuestas, con autenticación segura, tiem
 
 ## Configuración local
 
-1. **Clona el repositorio** o genera la estructura con el script Python incluido:
+1. Clona el repositorio y entra en el proyecto:
 
-   ```bash
-   python generar_visualverse.py
-   cd visualverse-notes
+  ```bash
+  git clone https://github.com/bearzarre-sudo/visualverse-notes.git
+  cd visualverse-notes
+  ```
+
+2. Instala dependencias:
+
+  ```bash
+  npm install
+  ```
+
+3. Crea tu archivo de entorno local `.env.local` con estas variables:
+
+  ```bash
+  NEXT_PUBLIC_SUPABASE_URL=https://TU-PROYECTO.supabase.co
+  NEXT_PUBLIC_SUPABASE_ANON_KEY=TU_SUPABASE_ANON_KEY
+  ```
+
+4. Crea la base de datos en Supabase:
+
+  - Abre el editor SQL de Supabase.
+  - Ejecuta el script [Gnerador en python/Supa.sql](Gnerador%20en%20python/Supa.sql).
+
+5. Inicia el servidor de desarrollo:
+
+  ```bash
+  npm run dev
+  ```
+
+6. Abre la app en `http://localhost:3000`.
+
+## Scripts disponibles
+
+- `npm run dev`: inicia Next.js en desarrollo.
+- `npm run build`: compila para producción.
+- `npm run start`: ejecuta el build de producción.
+
+## Despliegue en Vercel
+
+1. Importa el repositorio `bearzarre-sudo/visualverse-notes` en Vercel.
+2. Agrega estas variables de entorno en el proyecto de Vercel:
+
+  - `NEXT_PUBLIC_SUPABASE_URL`
+  - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+3. Ejecuta el despliegue.
+4. Verifica que las URLs de autenticación en Supabase incluyan:
+
+  - `https://TU-DOMINIO-VERCEL`
+  - `https://TU-DOMINIO-VERCEL/auth/login`
+  - `https://TU-DOMINIO-VERCEL/auth/signup`
+
+## Protección de rama
+
+La rama principal `main` está protegida para evitar cambios accidentales:
+
+- Requiere Pull Request con al menos 1 aprobación.
+- Bloquea `force push`.
+- Bloquea eliminación de la rama.
+- Requiere resolver conversaciones antes de merge.
+
+## Estructura principal
+
+- [app](app): rutas y layouts de la aplicación (App Router).
+- [app/dashboard/components](app/dashboard/components): componentes del panel de notas.
+- [lib/supabase](lib/supabase): clientes Supabase para browser, server y middleware.
+- [Gnerador en python](Gnerador%20en%20python): script y SQL auxiliar para generación/configuración.
+
+## Notas
+
+- Si trabajas en Windows y detectas errores de memoria con `next dev`, puedes usar temporalmente:
+
+  ```bash
+  npm run dev -- --webpack
+  ```
+
+- Mantén `next-env.d.ts` versionado en el repositorio (comportamiento recomendado por Next.js).
