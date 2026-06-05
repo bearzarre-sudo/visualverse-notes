@@ -1,5 +1,5 @@
--- Habilitar extensión uuid
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+-- Habilitar extensión para gen_random_uuid()
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 -- Tabla de perfiles (se llena automáticamente al registrarse)
 CREATE TABLE public.profiles (
